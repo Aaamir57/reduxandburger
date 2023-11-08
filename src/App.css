@@ -36,3 +36,127 @@
     transform: rotate(360deg);
   }
 }
+.maindiv{
+  display: grid;
+  place-items: center;
+}
+.updiv{
+  width: 250px;
+  height: 40px;
+  background: red;
+  margin-bottom: 20px;
+}
+.downdiv{
+  width: 250px;
+  height: 40px;  margin-bottom: 20px;
+  background: green;
+}
+.btndiv{
+  display: flex;
+  gap: 10px;
+}
+button{
+width: 60px;
+margin-top: 30px;
+height: 30px;
+}
+
+/* const [chickenCount, setChickenCount] = useState(0);
+  const [chickenAdded, setChickenAdded] = useState(false);
+  const [meatCount, setMeatCount] = useState(0);
+  const [meatAdded, setMeatAdded] = useState(false);
+  const [baconCount, setBaconCount] = useState(0);
+  const [baconAdded, setBaconAdded] = useState(false);
+  const [cheeseCount, setCheeseCount] = useState(0);
+  const [cheeseAdded, setCheeseAdded] = useState(false);
+  const [price, setPrice] = useState(0);
+  const[chicken,SetChicken]=useState('')
+  
+  const[chese,SetChese]=useState('')
+  const[meat,SetMeat]=useState('')
+  const[becan,SetBecan]=useState('')
+  
+
+  const [items, setItems] = useState('');
+
+  const chickenPrice = 5; // Assuming chicken price is $5
+  const meatPrice = 8; // Assuming meat price is $8
+  const baconPrice = 4; // Assuming bacon price is $4
+  const cheesePrice = 3; // Assuming cheese price is $3
+
+  function chesebtnmorre() {
+    setPrice(price + cheesePrice);
+    setCheeseCount(cheeseCount + 1);
+    setCheeseAdded(true);
+    SetChese(chese + ' cheese');
+  }
+
+
+  function chesebtnless() {
+    if (cheeseAdded && cheeseCount > 0) {
+      setPrice(price - cheesePrice);
+      setCheeseCount(cheeseCount - 1);
+      SetChese(chese.replace(/cheese$/, ''));
+      if (cheeseCount === 1) {
+        setCheeseAdded(false);
+      }
+    }
+  }
+
+  function chickenbtnmorre() {
+    setPrice(price + chickenPrice);
+    setChickenCount(chickenCount + 1);
+    setChickenAdded(true);
+    SetChicken(chicken + ' chicken');
+  }
+
+
+  function chickenbtnless() {
+    if (chickenAdded && chickenCount > 0) {
+      setPrice(price - chickenPrice);
+      setChickenCount(chickenCount - 1);
+      SetChicken(chicken.replace(/chicken$/, ''));
+      if (chickenCount === 1) {
+        setChickenAdded(false);
+      }
+    }
+  }
+
+  function meatbtnmorre() {
+    setPrice(price + meatPrice);
+    setMeatCount(meatCount + 1);
+    setMeatAdded(true);
+    SetMeat(meat + ' meat');
+  }
+
+
+  function meatbtnless() {
+    if (meatAdded && meatCount > 0) {
+      setPrice(price - meatPrice);
+      setMeatCount(meatCount - 1);
+      SetMeat(meat.replace(/meat$/, ''));
+      if (meatCount === 1) {
+        setMeatAdded(false);
+      }
+    }
+  }
+
+  function becanbtnmorre() {
+    setPrice(price + baconPrice);
+    setBaconCount(baconCount + 1);
+    setBaconAdded(true);
+    SetBecan(becan + ' bacon');
+  }
+
+
+  function becanbtnless() {
+    if (baconAdded && baconCount > 0) {
+      setPrice(price - baconPrice);
+      setBaconCount(baconCount - 1);
+      SetBecan(becan.replace(/bacon$/, ''));
+      if (baconCount === 1) {
+        setBaconAdded(false);
+      }
+    }
+
+  } */
