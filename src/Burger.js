@@ -5,7 +5,7 @@ export default function Burger() {
 
 
   const [chicken, SetChicken] = useState('');
- 
+
   const [chese, SetChese] = useState('');
   const [meat, SetMeat] = useState('');
   const [becan, SetBecan] = useState('');
@@ -22,6 +22,13 @@ export default function Burger() {
   const [meatAdded, SetMeatAdded] = useState(false)
 
 
+  const [becanImage, SetBecanImage] = useState(false);
+
+  const [becanImageSrc, SetBecanImageSrc] = useState('./becan.jpg');
+  const [meatImageSrc, SetMeatImageSrc] = useState('./meat.jpg');
+  const [chickenImageSrc, SetChickenImageSrc] = useState('./salad.jpg');
+  const [cheeseImageSrc, SetCheeseImageSrc] = useState('./cheese.jpg');
+
 
   const cheseprice = 5;
   const meatprice = 10;
@@ -30,38 +37,47 @@ export default function Burger() {
 
 
   function chesebtnmorre() {
-    SetPrice(price + cheseprice)
+    SetPrice(price + cheseprice);
     SetCheseAdded(true);
-    SetChese(prevChese => prevChese + ' chese');
     setCheseCount(cheseCount + 1);
-  }
 
+    SetChese(prevChese => [
+      ...prevChese,
+      <img key={`cheeseImage_${cheseCount}`} src={cheeseImageSrc} alt="Cheese" />,
+      <br key={`newLine_${cheseCount}`} />,
+    ]);
+  }
 
   function chesebtnless() {
     if (cheseAdded) {
-      const cheseArray = chese.split(' ');
-   
-      const lastCheseIndex = cheseArray.lastIndexOf('chese');
-  
-     
-      if (lastCheseIndex !== -1) {
-    
+      const cheseArray = [...chese];
+
+
+      const lastCheeseIndex = cheseArray.findIndex(item => {
+        if (React.isValidElement(item)) {
+          const imgSrc = item.props.src;
+          return imgSrc && imgSrc === './cheese.jpg';
+        }
+        return false;
+      });
+
+      if (lastCheeseIndex !== -1) {
+
+        cheseArray.splice(lastCheeseIndex, 2);
+
+
+        SetChese(cheseArray);
+
+
+        setCheseCount(cheseCount - 1);
+
+
+        if (cheseCount === 1) {
+          SetCheseAdded(false);
+        }
+
+
         SetPrice(price - cheseprice);
-        
-     
-        cheseArray.splice(lastCheseIndex, 1);
-        const updatedCheseString = cheseArray.join(' ');
-        SetChese(updatedCheseString);
-        
-       
-        const newCheseCount = cheseArray.filter(item => item === 'chese').length;
-        setCheseCount(newCheseCount);
-      }
-  
-      
-      if (cheseCount === 1) {
-        
-        SetCheseAdded(false);
       }
     }
   }
@@ -69,173 +85,275 @@ export default function Burger() {
 
   function chickenbtnmorre() {
     SetChickenAdded(true);
-    SetPrice(price + cheickenprice)
+    SetPrice(price + cheickenprice);
     setChickenCount(chickenCount + 1);
-    SetChicken(prevChicken => prevChicken + ' chicken');
+
+
+    SetChicken(prevChicken => [
+      ...prevChicken,
+      <img key={`chickenImage_${chickenCount}`} src={chickenImageSrc} alt="Chicken" />,
+      <br key={`newLine_${chickenCount}`} />,
+    ]);
   }
 
 
   function chickenbtnless() {
     if (chickenAdded) {
-      const chickenArray = chicken.split(' ');
-   
-      const lastChickenIndex = chickenArray.lastIndexOf('chicken');
-  
-     
+      const chickenArray = [...chicken];
+
+      const lastChickenIndex = chickenArray.findIndex(item => {
+        if (React.isValidElement(item)) {
+          const imgSrc = item.props.src;
+          return imgSrc && imgSrc === './salad.jpg';
+        }
+        return false;
+      });
+
+
+
       if (lastChickenIndex !== -1) {
-    
+
+        chickenArray.splice(lastChickenIndex, 2);
+
+        SetChicken(chickenArray);
+
+
+        setChickenCount(chickenCount - 1);
+
+
+        if (chickenCount === 1) {
+          SetChickenAdded(false);
+        }
+
+
         SetPrice(price - cheickenprice);
-        
-     
-        chickenArray.splice(lastChickenIndex, 1);
-        const updatedChickenString = chickenArray.join(' ');
-        SetChicken(updatedChickenString);
-        
-       
-        const newChickenCount = chickenArray.filter(item => item === 'chicken').length;
-        setChickenCount(newChickenCount);
-      }
-  
-      
-      if (chickenCount === 1) {
-        
-        SetChickenAdded(false);
       }
     }
   }
 
   function meatbtnmorre() {
-     SetMeatAdded(true);
-  
+    SetMeatAdded(true);
+
+
+    SetMeat(prevMeat => [
+      ...prevMeat,
+      <img key={`meatImage_${meatCount}`} src={meatImageSrc} alt="Meat" />,
+      <br key={`newLine_${meatCount}`} />,
+    ]);
+
+
     setMeatCount(meatCount + 1);
-    SetPrice(price + meatprice)
-    SetMeat(prevMeat => prevMeat + ' meat');
+    SetPrice(price + meatprice);
   }
-
-
   function meatbtnless() {
     if (meatAdded) {
-      const meatArray = meat.split(' ');
-   
-      const lastMeatIndex = meatArray.lastIndexOf('meat');
-  
-     
+      const meatArray = [...meat];
+
+
+      const lastMeatIndex = meatArray.findIndex(item => {
+        if (React.isValidElement(item)) {
+          const imgSrc = item.props.src;
+          return imgSrc && imgSrc === './meat.jpg';
+        }
+        return false;
+      });
+
+
+
       if (lastMeatIndex !== -1) {
-    
+
+        meatArray.splice(lastMeatIndex, 2);
+
+
+        SetMeat(meatArray);
+
+
+        setMeatCount(meatCount - 1);
+
+
+        if (meatCount === 1) {
+          SetMeatAdded(false);
+        }
+
         SetPrice(price - meatprice);
-        
-     
-        meatArray.splice(lastMeatIndex, 1);
-        const updatedMeatString = meatArray.join(' ');
-        SetMeat(updatedMeatString);
-        
-       
-        const newMeatCount = meatArray.filter(item => item === 'meat').length;
-        setMeatCount(newMeatCount);
-      }
-  
-      
-      if (meatCount === 1) {
-        
-        SetMeatAdded(false);
       }
     }
   }
+
+
+
 
   function becanbtnmorre() {
     SetBecanAdded(true);
-  
-    setBecanCount(becanCount + 1);
-   
-    SetPrice(price + becanprice)
-    SetBecan(prevBecan => prevBecan + ' becan');
-  }
+    SetBecan(prevBecan => [
+      ...prevBecan,
+      <img key={`becanImage_${becanCount}`} src={becanImageSrc} alt="Becan" />,
+      <br key={`newLine_${becanCount}`} />,
+    ]);
 
+
+    setBecanCount(becanCount + 1);
+    SetPrice(price + becanprice);
+  }
 
   function becanbtnless() {
     if (becanAdded) {
-      const becanArray = becan.split(' ');
-   
-      const lastBecanIndex = becanArray.lastIndexOf('becan');
-  
-     
+      const becanArray = [...becan];
+
+
+      const lastBecanIndex = becanArray.findIndex(item => {
+        if (React.isValidElement(item)) {
+          const imgSrc = item.props.src;
+          return imgSrc && imgSrc === './becan.jpg';
+        }
+        return false;
+      });
+
       if (lastBecanIndex !== -1) {
-    
+
+        becanArray.splice(lastBecanIndex, 2);
+
+
+        SetBecan(becanArray);
+
+
+        setBecanCount(becanCount - 1);
+
+
+        if (becanCount === 1) {
+          SetBecanAdded(false);
+        }
+
+
         SetPrice(price - becanprice);
-        
-     
-        becanArray.splice(lastBecanIndex, 1);
-        const updatedBecanString = becanArray.join(' ');
-        SetBecan(updatedBecanString);
-        
-       
-        const newBecanCount = becanArray.filter(item => item === 'becan').length;
-        setBecanCount(newBecanCount);
-      }
-  
-      
-      if (becanCount === 1) {
-        
-        SetBecanAdded(false);
       }
     }
   }
 
 
-  function placeorder(){
-    const modalContent = `Meat Count: ${meatCount}, Bacon Count: ${becanCount}, Total Price: ${price},chese count:${cheseCount}`;
-    alert(modalContent); 
+
+
+
+
+  function placeorder() {
+
+
+    // const modalContent = `Meat Count: ${meatCount}, Bacon Count: ${becanCount}, Total Price: ${price}, Cheese Count: ${cheseCount}`;
+
+    const modal = document.getElementById('myModal');
+    const modalContentElement = document.getElementById('modalContent');
+    modalContentElement.innerHTML = modal;
+    modal.style.display = 'block';
   }
 
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   return (
     <div>
-      <div className='maindiv'>
-        <div className='updiv'>
-
+      <div class="navbar">
+        <img src="./burger-logo.b8503d26.png" alt="Logo" />
+        <div class="navbar-right">
+          <a href="#home">Home</a>
+          <a href="#about">Sign in</a>
         </div>
-        <h1>{chicken}</h1>
-        <h1>{meat}</h1>
-        <h1>{becan}</h1>
-        <h1>{chese}</h1>
-
-        <div className='downdiv'>
-
-        </div>
-        <h1>current price</h1><h2>{price}</h2>
-        <p>Chicken Added: {chickenCount} times</p>
-        <p>Chese Added: {cheseCount} times</p>
-        <p>becan Added: {becanCount} times</p>
-        <p>meat Added: {meatCount} times</p>
-
-        <div className='btndiv'>
-          <h1>chese</h1>
-
-          <button onClick={chesebtnless}>less</button>
-          <button onClick={chesebtnmorre}>more</button>
-        </div>
-
-        <div className='btndiv'>
-          <h1>becan</h1>
-
-          <button onClick={becanbtnless}>less</button>
-          <button onClick={becanbtnmorre}>more</button>
-        </div>
-        <div className='btndiv'>
-          <h1>meat</h1>
-
-          <button onClick={meatbtnless}>less</button>
-          <button onClick={meatbtnmorre}>more</button>
-        </div>
-        <div className='btndiv'>
-          <h1>chicken</h1>
-
-          <button onClick={chickenbtnless}>less</button>
-          <button onClick={chickenbtnmorre}>more</button>
-        </div>
-        <button onClick={placeorder}>place order</button>
       </div>
+      <div className='maindiv'>
+        <div className='updivmain' id="updivmain">
+
+          <img src='./top.jpg' />
+
+          <h1>{chicken}</h1>
+          <h1>{meat}</h1>
+          <h1>{becan}</h1>
+          <h1>{chese}</h1>
+
+
+          <img src='./bottom.jpg' />
+
+        </div>
+        <div className='countmain'>
+          <p>current price ${price}</p>
+          <p>salad Added: {chickenCount} times</p>
+          <p>Chese Added: {cheseCount} times</p>
+          <p>becan Added: {becanCount} times</p>
+          <p>meat Added: {meatCount} times</p>
+        </div>
+
+        <div className='mainbtn2'>
+
+          <p>current price ${price}</p>
+
+          <div className='btndiv'>
+
+            <h1>chese</h1>
+            <div className='lessmore'>
+              <button onClick={chesebtnless} className='less'>less</button>
+              <button onClick={chesebtnmorre} className='more'>more</button>
+            </div>
+          </div>
+
+          <div className='btndiv'>
+            <h1>becan</h1>
+            <div className='lessmore'>
+
+
+              <button onClick={becanbtnless} className='less'>less</button>
+              <button onClick={becanbtnmorre} className='more'>more</button>
+            </div>
+          </div>
+          <div className='btndiv'>
+            <h1>meat</h1>
+
+            <div className='lessmore'>
+              <button onClick={meatbtnless} className='less'>less</button>
+              <button onClick={meatbtnmorre} className='more'>more</button>
+            </div>
+          </div>
+          <div className='btndiv'>
+            <h1>salad</h1>
+            <div className='lessmore'>
+              <button onClick={chickenbtnless} className='less'>less</button>
+              <button onClick={chickenbtnmorre} className='more'>more</button>
+            </div>
+          </div>
+          <button onClick={openModal} className='signin'>placeorder</button>
+
+          {modalVisible && (
+            <div className="modal" id="myModal">
+              <div className="modal-content">
+
+                <div id="modalContent" className='modalcontents'>
+                  <h1>Order Summary</h1>
+                  <p>A delicious burger with the following ingredients:</p>
+
+
+                  <ul>
+                    <li>salad: {chickenCount} </li>
+                    <li>Cheese: {cheseCount}</li>
+                    <li>becan: {becanCount}</li>
+                    <li>meat: {meatCount}</li>
+                  </ul>
+                  <p> $ {price}</p>
+                  <button className='cancel' onClick={closeModal}><h1>CANCEL</h1></button>
+
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+
+
     </div>
   )
 }

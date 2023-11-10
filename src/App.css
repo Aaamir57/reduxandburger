@@ -40,11 +40,18 @@
   display: grid;
   place-items: center;
 }
-.updiv{
-  width: 250px;
-  height: 40px;
-  background: red;
+
+.updivmain{
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+  max-height: 100%;
+  padding-top: 2%;
+ 
   margin-bottom: 20px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  margin-bottom: 10%;
 }
 .downdiv{
   width: 250px;
@@ -53,110 +60,246 @@
 }
 .btndiv{
   display: flex;
-  gap: 10px;
 }
-button{
-width: 60px;
-margin-top: 30px;
-height: 30px;
+.btndiv h1{
+  text-align: left;
+ 
+  position: relative;
+  bottom: 20px;
+  width: 100px;
+}
+.lessmore{
+  display: flex;
+gap: 10px;
+}
+p{
+  font-size: 35px;
+  font-weight: 500;
+}
+.more{
+width: 150px;
+/* margin-top: 30px; */
+height: 45px;
+background-color: #8f5e1e;;
+color: aliceblue;
+border: 1px solid #aa6817;
+font-size: 26px;
+font-size: bold;
+align-items: center;
+margin-bottom: 10px;
+
+}
+.countmain{
+  display: none;
+}
+.less{
+  width: 150px;
+/* margin-top: 30px; */
+height: 45px;
+background-color:  #ac9980;;;
+color: aliceblue;
+border: 1px solid  #ac9980;;
+font-size: 26px;
+align-items: center;
+font-size: bold;
+/* margin-left: 20px; */
+margin-bottom: 10px;}
+.signin{
+  width: 350px;
+margin-top: 60px;
+height: 100px;
+background-color:  #c7c6c6;
+color: black;
+border: 1px solid  #c7c6c6;
+font-size: 26px;
+font-size: bold;
+margin-left: 20px;
+margin-bottom: 10px;}
+
+.mainbtn2{
+  width: 100%;
+  height: 100%;
+ 
+ 
+  padding-top: 30px;
+padding-bottom:30px ;
+  display: grid;
+  place-items: center;
+  background:  #cf8f2e;;
 }
 
-/* const [chickenCount, setChickenCount] = useState(0);
-  const [chickenAdded, setChickenAdded] = useState(false);
-  const [meatCount, setMeatCount] = useState(0);
-  const [meatAdded, setMeatAdded] = useState(false);
-  const [baconCount, setBaconCount] = useState(0);
-  const [baconAdded, setBaconAdded] = useState(false);
-  const [cheeseCount, setCheeseCount] = useState(0);
-  const [cheeseAdded, setCheeseAdded] = useState(false);
-  const [price, setPrice] = useState(0);
-  const[chicken,SetChicken]=useState('')
+
+.navbar {
+  background-color:#703b09;;
+  height: 100px;
+  overflow: hidden;
+ 
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  padding-right: 80px;
+  padding-top: 35px;
+}
+
+.navbar img {
+  display: block;
+  height: 80px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  float: left;
+}
+
+.navbar-right {
+  float: right;
+}
+
+
+
+
+
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 30%;
+  top: 10%;
+  width: 50%;
+  height: 130%;
+  overflow: auto;
+ 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+.modalcontents{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.modalcontents p{
+  font-size: 19px;
+}
+.modalcontents li{
+  text-align: left;
+}
+
+.cancel{
+  background: none;
+ 
+ 
+
+  background-color: none;
+  border: none;
+ 
+    position: relative;
+    right: 5px;
   
-  const[chese,SetChese]=useState('')
-  const[meat,SetMeat]=useState('')
-  const[becan,SetBecan]=useState('')
+}
+.cancel h1{
+  background: none;
+  font-weight: 600;
+  color: #944317;
+ 
+  font-size: 20px;
+
   
+}
 
-  const [items, setItems] = useState('');
 
-  const chickenPrice = 5; // Assuming chicken price is $5
-  const meatPrice = 8; // Assuming meat price is $8
-  const baconPrice = 4; // Assuming bacon price is $4
-  const cheesePrice = 3; // Assuming cheese price is $3
+@media (max-width: 800px) {
+.maindiv{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+ 
+}.updivmain img{
+  width: 80%;
+}.modal{
+  width: 70%;
 
-  function chesebtnmorre() {
-    setPrice(price + cheesePrice);
-    setCheeseCount(cheeseCount + 1);
-    setCheeseAdded(true);
-    SetChese(chese + ' cheese');
+}
+}
+@media (max-width: 530px) {
+  .maindiv{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  
+    
+  }.updivmain{
+    width: 100%;
+    margin-top: 140px;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+  }.updivmain img{
+    width: 70%;
+  }.modal{
+    width: 70%;
+  
+  
+  }.cancel{
+    position: relative;
+    right: 5px;
   }
-
-
-  function chesebtnless() {
-    if (cheeseAdded && cheeseCount > 0) {
-      setPrice(price - cheesePrice);
-      setCheeseCount(cheeseCount - 1);
-      SetChese(chese.replace(/cheese$/, ''));
-      if (cheeseCount === 1) {
-        setCheeseAdded(false);
-      }
+  }
+  @media (max-width: 455px) {
+    .maindiv{
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+     
+      ;
+    }.updivmain{
+      width: 100%;
+      margin-top: 140px;
+      margin-bottom: 0%;
+      padding-bottom: 0%;
+    }.updivmain img{
+      width: 70%;
+    }.signin{
+      min-width: 175px;
+     
     }
-  }
-
-  function chickenbtnmorre() {
-    setPrice(price + chickenPrice);
-    setChickenCount(chickenCount + 1);
-    setChickenAdded(true);
-    SetChicken(chicken + ' chicken');
-  }
-
-
-  function chickenbtnless() {
-    if (chickenAdded && chickenCount > 0) {
-      setPrice(price - chickenPrice);
-      setChickenCount(chickenCount - 1);
-      SetChicken(chicken.replace(/chicken$/, ''));
-      if (chickenCount === 1) {
-        setChickenAdded(false);
-      }
+    .mainbtn2 button{
+      max-width: 95px;
     }
-  }
-
-  function meatbtnmorre() {
-    setPrice(price + meatPrice);
-    setMeatCount(meatCount + 1);
-    setMeatAdded(true);
-    SetMeat(meat + ' meat');
-  }
-
-
-  function meatbtnless() {
-    if (meatAdded && meatCount > 0) {
-      setPrice(price - meatPrice);
-      setMeatCount(meatCount - 1);
-      SetMeat(meat.replace(/meat$/, ''));
-      if (meatCount === 1) {
-        setMeatAdded(false);
-      }
     }
-  }
-
-  function becanbtnmorre() {
-    setPrice(price + baconPrice);
-    setBaconCount(baconCount + 1);
-    setBaconAdded(true);
-    SetBecan(becan + ' bacon');
-  }
-
-
-  function becanbtnless() {
-    if (baconAdded && baconCount > 0) {
-      setPrice(price - baconPrice);
-      setBaconCount(baconCount - 1);
-      SetBecan(becan.replace(/bacon$/, ''));
-      if (baconCount === 1) {
-        setBaconAdded(false);
-      }
-    }
-
-  } */
